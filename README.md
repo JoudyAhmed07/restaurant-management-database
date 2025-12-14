@@ -1,7 +1,7 @@
 # Restaurant Management Database
 
 ## Project Overview
-This project is a simple Restaurant Management Database designed for a university database course.
+This project is a simple Restaurant Management Database designed for a university course project.
 It covers core operations such as customers, orders, menu items, employees, tables, and payments.
 
 ## Entities
