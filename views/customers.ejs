@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">⚡ NEXUS ADMIN</div>
+        <a href="/" class="nav-link">Dashboard Home</a>
+    </nav>
+    <div class="container">
+        <div class="page-title-row">
+            <h2>Registered Customers</h2>
+            <a href="/" class="back-dashboard-btn">← Back to Dashboard</a>
+        </div>
+
+        <div class="add-record-card">
+            <h3 style="margin-top:0; font-size:18px;">Add New Customer</h3>
+            <form action="/customers/add" method="POST">
+                <div style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+                    <div style="flex: 0.5;">
+                        <label class="form-label">ID</label>
+                        <input type="number" name="customer_id" class="modern-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">NAME</label>
+                        <input type="text" name="name" class="modern-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">PHONE</label>
+                        <input type="text" name="phone" class="modern-input">
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">EMAIL</label>
+                        <input type="email" name="email" class="modern-input">
+                    </div>
+                    <button type="submit" class="add-btn">Add Customer</button>
+                </div>
+            </form>
+        </div>
+
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Phone</th><th>Email</th><th style="text-align: right;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% customers.forEach(c => { %>
+                <tr class="employee-row">
+                    <td>#<%= c.customer_id %></td>
+                    <td style="font-weight:700;"><%= c.name %></td>
+                    <td><%= c.phone %></td>
+                    <td><%= c.email %></td>
+                    <td style="text-align: right;">
+    <a href="/customers/edit/<%= c.customer_id %>" class="edit-action">EDIT</a>
+    <a href="/customers/delete/<%= c.customer_id %>" class="delete-action" onclick="return confirm('Delete this customer? Warning: This might fail if they have active orders.')">DELETE</a>
+</td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

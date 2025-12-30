@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Management</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">⚡ NEXUS ADMIN</div>
+        <a href="/" class="nav-link">Dashboard Home</a>
+    </nav>
+    <div class="container">
+        <div class="page-title-row">
+            <h2>Menu & Branches</h2>
+            <a href="/" class="back-dashboard-btn">← Back to Dashboard</a>
+        </div>
+        
+        <div class="add-record-card">
+            <h3 style="margin-top:0; font-size:18px;">Add New Branch</h3>
+            <form action="/branch/add" method="POST">
+                <div style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+                    <div style="flex: 0.5;">
+                        <label class="form-label">ID</label>
+                        <input type="number" name="branch_id" class="modern-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">NAME</label>
+                        <input type="text" name="name" class="modern-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">LOCATION</label>
+                        <input type="text" name="location" class="modern-input">
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">PHONE</label>
+                        <input type="text" name="phone" class="modern-input">
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">MENU</label>
+                        <select name="menu_id" class="modern-input">
+                            <option value="" disabled selected>Select...</option>
+                            <% menus.forEach(m => { %>
+                                <option value="<%= m.MenuID %>"><%= m.menu_type %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <button type="submit" class="add-btn">Add Branch</button>
+                </div>
+            </form>
+        </div>
+
+        <h3>Branch Locations</h3>
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Name</th><th>Location</th><th>Phone</th><th>Menu</th><th style="text-align:right;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% branches.forEach(b => { %>
+                <tr class="employee-row">
+                    <td>#<%= b.BranchID %></td>
+                    <td style="font-weight:700;"><%= b.name %></td>
+                    <td><%= b.location %></td>
+                    <td><%= b.phone_number %></td>
+                    <td><span class="badge"><%= b.menu_type || 'None' %></span></td>
+                    <td style="text-align: right;">
+                        <a href="/branch/edit/<%= b.BranchID %>" class="edit-action">EDIT</a>
+                        <a href="/branch/delete/<%= b.BranchID %>" class="delete-action" onclick="return confirm('Delete?')">DELETE</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+        <h3 style="margin-top:40px;">Menu Content Details</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <% menus.forEach(m => { %>
+            <div class="menu-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <div style="height: 150px; overflow: hidden; position: relative;">
+                    <img src="/static/<%= m.menu_image %>" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/300x150?text=No+Image'">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 10px; color: white;">
+                        <h3 style="margin: 0; text-transform: uppercase; font-size: 1.2rem;"><%= m.menu_type %></h3>
+                    </div>
+                </div>
+                
+                <div style="padding: 15px;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <% if (items && items.length > 0) { %>
+                            <% items.filter(i => i.MenuID == m.MenuID).forEach(item => { %>
+                            <tr>
+                                <td style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                                    <strong style="color: #2d3748;"><%= item.ItemName %></strong><br>
+                                    <span style="font-size: 0.8em; color: #718096;"><%= item.Description %></span>
+                                </td>
+                                <td style="text-align: right; padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold; color: #2f855a;">
+                                    $<%= item.Price %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr><td colspan="2" style="color: #718096; font-style: italic; padding: 10px;">Loading items...</td></tr>
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        
+        <br><br>
+    </div>
+</body>
+</html>

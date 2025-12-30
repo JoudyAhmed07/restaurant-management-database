@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Record | Nexus Admin</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">⚡ NEXUS ADMIN</div>
+        <a href="/" class="nav-link">Dashboard Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="page-title-row">
+            <h2>Edit Record</h2>
+            <a href="/employees" class="cancel-btn">← Cancel</a>
+        </div>
+
+        <div class="edit-container">
+            <div class="edit-card">
+                <form action="/edit/<%= emp.employee_id %>" method="POST">
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">ID (LOCKED)</label>
+                        <input type="text" value="<%= emp.employee_id %>" class="modern-input locked-input" disabled>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">NAME</label>
+                        <input type="text" name="full_name" value="<%= emp.name %>" class="modern-input" required>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">PHONE</label>
+                        <input type="text" name="phone" value="<%= emp.phone %>" class="modern-input">
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">SALARY</label>
+                        <input type="number" step="0.01" name="salary" value="<%= emp.salary %>" class="modern-input">
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <label class="form-label">ROLE</label>
+                        <select name="role_id" class="modern-input">
+                            <% roles.forEach(role => { %>
+                                <option value="<%= role.role_id %>" <%= role.role_id == emp.role_id ? 'selected' : '' %>>
+                                    <%= role.role_name %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">⚡ NEXUS ADMIN</div>
+        <a href="/" class="nav-link">Dashboard Home</a>
+    </nav>
+    <div class="container">
+        <div class="page-title-row">
+            <h2>Edit Customer</h2>
+            <a href="/customers" class="cancel-btn">← Cancel</a>
+        </div>
+        <div class="edit-container">
+            <div class="edit-card">
+                <form action="/customers/edit/<%= customer.customer_id %>" method="POST">
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">CUSTOMER ID (LOCKED)</label>
+                        <input type="text" value="<%= customer.customer_id %>" class="modern-input locked-input" disabled>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">NAME</label>
+                        <input type="text" name="name" value="<%= customer.name %>" class="modern-input" required>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label class="form-label">PHONE</label>
+                        <input type="text" name="phone" value="<%= customer.phone %>" class="modern-input">
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <label class="form-label">EMAIL</label>
+                        <input type="email" name="email" value="<%= customer.email %>" class="modern-input">
+                    </div>
+
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

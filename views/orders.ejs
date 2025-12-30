@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders Database</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">⚡ NEXUS ADMIN</div>
+        <a href="/" class="nav-link">Dashboard Home</a>
+    </nav>
+    <div class="container">
+        <div class="page-title-row">
+            <h2>Orders Database</h2>
+            <a href="/" class="back-dashboard-btn">← Back to Dashboard</a>
+        </div>
+
+        <div class="add-record-card">
+            <h3 style="margin-top:0; font-size:18px;">Add New Order</h3>
+            <form action="/orders/add" method="POST">
+                <div style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+                    <div style="flex: 0.5;">
+                        <label class="form-label">ID</label>
+                        <input type="number" name="order_id" class="modern-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">CUSTOMER</label>
+                        <select name="customer_id" class="modern-input" required>
+                            <option value="" disabled selected>Select...</option>
+                            <% customers.forEach(c => { %>
+                                <option value="<%= c.customer_id %>"><%= c.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">DATE</label>
+                        <input type="date" name="order_date" class="modern-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label class="form-label">STATUS</label>
+                        <select name="status" class="modern-input">
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="add-btn">Create Order</button>
+                </div>
+            </form>
+        </div>
+
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Customer</th><th>Status</th><th>Date</th><th style="text-align: right;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(o => { %>
+                <tr class="employee-row">
+                    <td>#<%= o.order_id %></td>
+                    <td style="font-weight:700;"><%= o.cust_name || 'Unknown' %></td>
+                    <td><span class="badge badge-<%= o.order_status ? o.order_status.toLowerCase() : 'default' %>"><%= o.order_status %></span></td>
+                    <td><%= o.pretty_date %></td>
+                    <td style="text-align: right;">
+                        <a href="/orders/edit/<%= o.order_id %>" class="edit-action">EDIT</a>
+                        <a href="/orders/delete/<%= o.order_id %>" class="delete-action" onclick="return confirm('Delete?')">DELETE</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

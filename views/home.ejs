@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nexus Admin | Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">⚡ NEXUS ADMIN</div>
+        <a href="/" class="nav-link">Dashboard Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>System Dashboard</h1>
+            <p style="color: #718096;">Select a database module to manage.</p>
+        </div>
+
+        <div class="grid-dashboard">
+            <a href="/employees" class="module-card">
+                <div class="card-banner">
+                    <img class="banner-img" src="/static/staff.jpg" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop'">
+                    <span class="status-badge online">• ONLINE</span>
+                    <div class="card-icon-box">👨‍🍳</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Staff Management</h3>
+                    <p class="card-desc">Manage employees, roles, and payroll.</p>
+                </div>
+            </a>
+
+            <a href="/menu" class="module-card">
+                <div class="card-banner">
+                    <img class="banner-img" src="/static/food.jpg" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop'">
+                    <span class="status-badge online">• ONLINE</span>
+                    <div class="card-icon-box">🥗</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Menu & Branches</h3>
+                    <p class="card-desc">Menus, branches, and locations.</p>
+                </div>
+            </a>
+
+            <a href="/orders" class="module-card">
+                <div class="card-banner">
+                    <img class="banner-img" src="/static/orders.jpg" onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&auto=format&fit=crop'">
+                    <span class="status-badge online">• ONLINE</span>
+                    <div class="card-icon-box">📠</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Orders & Payments</h3>
+                    <p class="card-desc">Track orders, billing, and deliveries.</p>
+                </div>
+            </a>
+
+            <a href="/customers" class="module-card">
+                <div class="card-banner">
+                    <img class="banner-img" src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&auto=format&fit=crop">
+                    <span class="status-badge online">• ONLINE</span>
+                    <div class="card-icon-box">👥</div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Customers</h3>
+                    <p class="card-desc">Guest database and reservations.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
