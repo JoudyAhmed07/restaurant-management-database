@@ -23,4 +23,5 @@ All contributions are tracked using GitHub commits.
 ## Tools
 - ER Diagram: draw.io
 - SQL: MySQL
+- LocalDB: XAMPP
 - Version Control: GitHub
