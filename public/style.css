@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
+
+:root {
+    --dark: #1a1c23;
+    --bg: #f4f7fe;
+    --text-muted: #718096;
+    --white: #ffffff;
+}
+
+body { font-family: 'Outfit', sans-serif; background-color: var(--bg); margin: 0; color: #2d3748; }
+
+/* NAVBAR */
+.navbar { background: var(--dark); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; color: white; }
+.logo { font-size: 20px; font-weight: 800; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
+.nav-link { color: #a0aec0; text-decoration: none; font-size: 14px; }
+
+/* LAYOUT */
+.container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+/* --- HOME DASHBOARD --- */
+.header-section { text-align: center; margin-bottom: 50px; }
+.header-section h1 { font-size: 32px; margin-bottom: 10px; color: #1a202c; }
+.grid-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+.module-card { background: white; border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; display: flex; flex-direction: column; }
+.module-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+
+.card-banner { height: 160px; position: relative; }
+.banner-img { width: 100%; height: 100%; object-fit: cover; }
+.card-icon-box { width: 50px; height: 50px; background: white; border-radius: 12px; position: absolute; bottom: -25px; left: 25px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 8px 15px rgba(0,0,0,0.1); z-index: 2; }
+.status-badge { position: absolute; top: 15px; right: 15px; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.online { background: #2fcf65; color: white; }
+.locked { background: rgba(0,0,0,0.5); color: white; backdrop-filter: blur(4px); }
+
+.card-body { padding: 40px 25px 30px; }
+.card-title { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* --- EMPLOYEES PAGE --- */
+.page-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.back-dashboard-btn { background: white; padding: 10px 20px; border-radius: 12px; text-decoration: none; color: #64748b; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+
+.add-record-card { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 40px; }
+.form-label { font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; display: block; margin-bottom: 8px; }
+.modern-input { background: #f8fafc; border: 2px solid #f1f5f9; border-radius: 12px; padding: 12px 16px; width: 100%; box-sizing: border-box; font-family: inherit; }
+.modern-input:focus { outline: none; border-color: #cbd5e1; background: white; }
+.add-btn { background: #000; color: white; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; height: 46px; }
+
+/* TABLE STYLES */
+.employee-table { width: 100%; border-collapse: separate; border-spacing: 0 12px; }
+.employee-table th { text-align: left; padding: 0 20px; font-size: 12px; color: #94a3b8; text-transform: uppercase; font-weight: 800; }
+.employee-row td { background: white; padding: 18px 20px; font-size: 15px; }
+.employee-row td:first-child { border-top-left-radius: 12px; border-bottom-left-radius: 12px; font-weight: 800; color: #1e293b; }
+.employee-row td:last-child { border-top-right-radius: 12px; border-bottom-right-radius: 12px; text-align: right; }
+
+.badge { padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; }
+.badge-manager { background: #e0f2fe; color: #0284c7; }
+.badge-chef { background: #f0fdf4; color: #16a34a; }
+.badge-waiter { background: #fff7ed; color: #ea580c; }
+.badge-cashier { background: #f3e8ff; color: #9333ea; }
+.badge-default { background: #f1f5f9; color: #64748b; }
+
+/* ACTION BUTTONS */
+.edit-action { color: #FBC02D; text-decoration: none; font-size: 12px; font-weight: 800; margin-right: 15px; letter-spacing: 0.5px; transition: opacity 0.2s; }
+.delete-action { color: #E53935; text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; transition: opacity 0.2s; }
+.edit-action:hover, .delete-action:hover { opacity: 0.7; text-decoration: underline; }
+
+/* --- EDIT PAGE --- */
+.edit-container { max-width: 600px; margin: 40px auto; }
+.edit-card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+.locked-input { background: #f1f5f9; color: #64748b; cursor: not-allowed; }
+.save-btn { background: #000; color: white; border: none; padding: 16px; width: 100%; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; margin-top: 10px; }
+.save-btn:hover { background: #222; transform: translateY(-2px); transition: all 0.2s; }
+.cancel-btn { background: white; padding: 8px 20px; border-radius: 10px; text-decoration: none; color: #64748b; font-weight: 600; font-size: 13px; border: 1px solid #e2e8f0; }
